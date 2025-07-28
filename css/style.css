@@ -3,7 +3,7 @@
 /* 基础字体设置 */
 body {
     font-family: serif;
-    line-height: 1.2;
+    line-height: 1.05;
     color: #000000;
     font-size: 16px;
     background-color: #fff;
@@ -12,39 +12,39 @@ body {
 /* 等宽字体用于标题 */
 .font-mono {
     font-family: monospace;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
 }
 
 /* 标题样式 */
 h1, h2, h3, h4, h5, h6 {
     font-family: serif;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.05;
     color: #000;
 }
 
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 h2 {
     font-size: 1.75rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 /* 段落样式 */
 p {
-    margin-bottom: 0.4rem;
-    line-height: 1.2;
+    margin-bottom: 0.2rem;
+    line-height: 1.05;
     color: #111;
     font-size: 1rem;
 }
@@ -195,27 +195,27 @@ html {
 
 /* 报纸风格间距 */
 .mb-12 {
-    margin-bottom: 0.5rem;
-}
-
-.mb-8 {
-    margin-bottom: 0.4rem;
-}
-
-.mb-6 {
     margin-bottom: 0.3rem;
 }
 
-.mb-4 {
+.mb-8 {
+    margin-bottom: 0.25rem;
+}
+
+.mb-6 {
     margin-bottom: 0.2rem;
 }
 
-.mb-3 {
+.mb-4 {
     margin-bottom: 0.1rem;
 }
 
+.mb-3 {
+    margin-bottom: 0.05rem;
+}
+
 .mb-2 {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.025rem;
 }
 
 /* 边框样式 */
