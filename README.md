@@ -1,4 +1,4 @@
-<img src="https://avatars.githubusercontent.com/u/207149215" alt="AFX" width="100" />
+<img src="https://mdn.alipayobjects.com/huamei_fkc4p0/afts/img/A*ZS65TK3UxJcAAAAAQHAAAAgAeobDAQ/original" alt="AFX" width="100" />
 
 # AFX Team 官方网站
 
