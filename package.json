@@ -1,0 +1,22 @@
+{
+  "name": "afx-team-website",
+  "version": "1.0.0",
+  "description": "AFX Team 官方网站",
+  "scripts": {
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --write .",
+    "format:check": "biome format .",
+    "lint:check": "biome lint ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.2"
+  },
+  "keywords": [
+    "frontend",
+    "team",
+    "website"
+  ],
+  "author": "AFX Team",
+  "license": "MIT"
+}

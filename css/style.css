@@ -2,274 +2,279 @@
 
 /* 基础字体设置 */
 body {
-    font-family: serif;
-    line-height: 1.15;
-    color: #000000;
-    font-size: 16px;
-    background-color: #fff;
-    letter-spacing: 0.01em;
+  font-family: serif;
+  line-height: 1.15;
+  color: #000000;
+  font-size: 16px;
+  background-color: #fff;
+  letter-spacing: 0.01em;
 }
 
 /* 等宽字体用于标题 */
 .font-mono {
-    font-family: monospace;
-    letter-spacing: -0.02em;
+  font-family: monospace;
+  letter-spacing: -0.02em;
 }
 
 /* 标题样式 */
-h1, h2, h3, h4, h5, h6 {
-    font-family: serif;
-    font-weight: 600;
-    line-height: 1.15;
-    color: #000;
-    letter-spacing: 0.02em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: serif;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #000;
+  letter-spacing: 0.02em;
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.03em;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.03em;
 }
 
 h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.02em;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
 }
 
 h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.01em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
 }
 
 /* 段落样式 */
 p {
-    margin-bottom: 0.3rem;
-    line-height: 1.15;
-    color: #111;
-    font-size: 1rem;
-    letter-spacing: 0.01em;
+  margin-bottom: 0.3rem;
+  line-height: 1.15;
+  color: #111;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
 }
 
 /* 链接样式 */
 a {
-    color: #000;
-    text-decoration: underline;
-    text-decoration-color: #333;
-    text-underline-offset: 2px;
-    transition: none;
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #333;
+  text-underline-offset: 2px;
+  transition: none;
 }
 
 a:hover {
-    color: #333;
-    text-decoration-color: #000;
+  color: #333;
+  text-decoration-color: #000;
 }
 
 /* 导航样式 */
 nav {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
 }
 
 nav a {
-    font-family: sans-serif;
-    font-weight: 500;
-    text-decoration: none;
-    font-size: 0.875rem;
-    color: #333;
+  font-family: sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.875rem;
+  color: #333;
 }
 
 nav a:hover {
-    color: #000;
+  color: #000;
 }
 
 /* 卡片样式 */
 .card {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  background: #ffffff;
 }
 
 .card:hover {
-    border-color: #999;
+  border-color: #999;
 }
 
 /* 标签样式 */
 .tag {
-    display: inline-block;
-    padding: 0.375rem 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    border: 1px solid #999;
-    background: #f0f0f0;
-    color: #111;
+  display: inline-block;
+  padding: 0.375rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid #999;
+  background: #f0f0f0;
+  color: #111;
 }
 
 .tag:hover {
-    background: #e0e0e0;
-    border-color: #666;
+  background: #e0e0e0;
+  border-color: #666;
 }
 
 /* 分隔线样式 */
 hr {
-    border: none;
-    border-top: 1px solid #999;
-    margin: 1rem 0;
-    height: 0;
+  border: none;
+  border-top: 1px solid #999;
+  margin: 1rem 0;
+  height: 0;
 }
 
 /* 响应式调整 */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 1.25rem;
-    }
-    
-    h2 {
-        font-size: 1rem;
-    }
-    
-    .container {
-        padding: 0 0.5rem;
-    }
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
 }
 
 /* 滚动行为 */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* 选择文本样式 */
 ::selection {
-    background: #e5e5e5;
-    color: #000;
+  background: #e5e5e5;
+  color: #000;
 }
 
 /* 焦点样式 */
 :focus {
-    outline: 1px solid #000;
-    outline-offset: 1px;
+  outline: 1px solid #000;
+  outline-offset: 1px;
 }
 
 /* 打印样式 */
 @media print {
-    body {
-        font-size: 11pt;
-        line-height: 1.3;
-    }
-    
-    .no-print {
-        display: none;
-    }
+  body {
+    font-size: 11pt;
+    line-height: 1.3;
+  }
+
+  .no-print {
+    display: none;
+  }
 }
 
 /* 报纸风格引用块 */
 .quote-block {
-    border-left: 4px solid #999;
-    padding-left: 1rem;
-    margin: 1.5rem 0;
-    font-style: italic;
-    color: #333;
+  border-left: 4px solid #999;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #333;
 }
 
 /* 报纸风格网格布局 */
 .newspaper-grid {
-    display: grid;
-    gap: 2rem;
+  display: grid;
+  gap: 2rem;
 }
 
 /* 报纸风格分栏 */
 .newspaper-column {
-    column-count: 2;
-    column-gap: 2rem;
-    text-align: justify;
+  column-count: 2;
+  column-gap: 2rem;
+  text-align: justify;
 }
 
 @media (max-width: 768px) {
-    .newspaper-column {
-        column-count: 1;
-    }
+  .newspaper-column {
+    column-count: 1;
+  }
 }
 
 /* Logo 样式 */
 .logo {
-    /* 无动画效果 */
+  /* 无动画效果 */
 }
 
 /* 报纸风格间距 */
 .mb-12 {
-    margin-bottom: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 .mb-8 {
-    margin-bottom: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 
 .mb-6 {
-    margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .mb-4 {
-    margin-bottom: 0.15rem;
+  margin-bottom: 0.15rem;
 }
 
 .mb-3 {
-    margin-bottom: 0.1rem;
+  margin-bottom: 0.1rem;
 }
 
 .mb-2 {
-    margin-bottom: 0.05rem;
+  margin-bottom: 0.05rem;
 }
 
 /* 边框样式 */
 .border-l-4 {
-    border-left-width: 4px;
+  border-left-width: 4px;
 }
 
 /* 精致的分隔线 */
 .border-b {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: #e5e5e5;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e5e5e5;
 }
 
 .border-black {
-    border-color: #000;
+  border-color: #000;
 }
 
 /* 精致的背景色 */
 .bg-gray-50 {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 /* 精致的文字颜色 */
 .text-gray-600 {
-    color: #666;
+  color: #666;
 }
 
 .text-gray-700 {
-    color: #555;
+  color: #555;
 }
 
 /* 精致的间距 */
 .space-y-1 > * + * {
-    margin-top: 0.25rem;
+  margin-top: 0.25rem;
 }
 
 .space-y-2 > * + * {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 /* 精致的圆角 */
 .rounded {
-    border-radius: 0.25rem;
+  border-radius: 0.25rem;
 }
 
 /* 精致的阴影 */
 .shadow-sm {
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-} 
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
