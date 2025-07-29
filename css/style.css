@@ -3,63 +3,70 @@
 /* 基础字体设置 */
 body {
     font-family: serif;
-    line-height: 1.05;
+    line-height: 1.15;
     color: #000000;
     font-size: 16px;
     background-color: #fff;
+    letter-spacing: 0.01em;
 }
 
 /* 等宽字体用于标题 */
 .font-mono {
     font-family: monospace;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
 }
 
 /* 标题样式 */
 h1, h2, h3, h4, h5, h6 {
     font-family: serif;
     font-weight: 600;
-    line-height: 1.05;
+    line-height: 1.15;
     color: #000;
+    letter-spacing: 0.02em;
 }
 
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.03em;
 }
 
 h2 {
     font-size: 1.75rem;
     font-weight: 600;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
 }
 
 h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
 }
 
 /* 段落样式 */
 p {
-    margin-bottom: 0.2rem;
-    line-height: 1.05;
+    margin-bottom: 0.3rem;
+    line-height: 1.15;
     color: #111;
     font-size: 1rem;
+    letter-spacing: 0.01em;
 }
 
 /* 链接样式 */
 a {
     color: #000;
     text-decoration: underline;
-    text-decoration-color: #666;
+    text-decoration-color: #333;
     text-underline-offset: 2px;
+    transition: none;
 }
 
 a:hover {
     color: #333;
-    text-decoration-color: #333;
+    text-decoration-color: #000;
 }
 
 /* 导航样式 */
@@ -195,66 +202,74 @@ html {
 
 /* 报纸风格间距 */
 .mb-12 {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
 }
 
 .mb-8 {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.3rem;
 }
 
 .mb-6 {
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.25rem;
 }
 
 .mb-4 {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.15rem;
 }
 
 .mb-3 {
-    margin-bottom: 0.05rem;
+    margin-bottom: 0.1rem;
 }
 
 .mb-2 {
-    margin-bottom: 0.025rem;
+    margin-bottom: 0.05rem;
 }
 
 /* 边框样式 */
-.border-gray-300 {
-    border-color: #ddd;
+.border-l-4 {
+    border-left-width: 4px;
 }
 
-.border-gray-100 {
-    border-color: #f5f5f5;
+/* 精致的分隔线 */
+.border-b {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #e5e5e5;
 }
 
-.border-gray-200 {
-    border-color: #e5e5e5;
+.border-black {
+    border-color: #000;
 }
 
-/* 文字大小 */
-.text-sm {
-    font-size: 0.875rem;
+/* 精致的背景色 */
+.bg-gray-50 {
+    background-color: #fafafa;
 }
 
-.text-xs {
-    font-size: 0.75rem;
-}
-
-/* 灰色文字 */
-.text-gray-500 {
+/* 精致的文字颜色 */
+.text-gray-600 {
     color: #666;
 }
 
-.text-gray-600 {
+.text-gray-700 {
     color: #555;
 }
 
-.text-gray-700 {
-    color: #333;
+/* 精致的间距 */
+.space-y-1 > * + * {
+    margin-top: 0.25rem;
 }
 
-/* 粘性侧边栏 */
-.sticky {
-    position: sticky;
-    top: 2rem;
+.space-y-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+/* 精致的圆角 */
+.rounded {
+    border-radius: 0.25rem;
+}
+
+/* 精致的阴影 */
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 } 
