@@ -1,0 +1,93 @@
+# AFX Team 官方网站 - Cursor 编辑器规则
+
+## 项目概述
+这是支付宝体验技术部的官方网站，采用简洁优雅的设计风格，参考报纸排版美学，强调内容优先的设计理念。
+
+## 技术栈
+- **前端框架**：原生 HTML5 + CSS3 + JavaScript ES6+
+- **CSS 框架**：Tailwind CSS (CDN) + 自定义设计系统
+- **构建工具**：Biome (代码格式化和检查)
+- **字体**：系统默认衬线字体 (serif)
+- **分析工具**：Google Analytics 4
+
+## 编码规范
+
+### HTML 规范
+- 使用语义化 HTML5 标签 (`<header>`, `<main>`, `<section>`, `<article>`, `<nav>`, `<aside>`)
+- 添加适当的 `aria-label` 和 `aria-labelledby` 属性提升无障碍性
+- 使用 `role="list"` 和 `role="listitem"` 为列表元素添加语义
+- 所有链接添加 `target="_blank"` 和 `aria-label` 属性
+- 使用 `<time>` 标签表示日期时间
+
+### CSS 规范
+- 优先使用 Tailwind CSS 工具类
+- 自定义样式使用 CSS 变量系统
+- 保持响应式设计，使用 `lg:` 等断点前缀
+- 字体使用 `serif` 和 `monospace`
+- 颜色使用灰度系统 (`gray-50`, `gray-100`, `gray-200`, `gray-400`, `gray-600`, `gray-700`)
+
+### JavaScript 规范
+- 使用 ES6+ 语法
+- 采用模块化设计，将功能分离到独立文件
+- 使用类的方式组织代码 (`WebsiteManager`, `I18nManager`)
+- 添加 JSDoc 注释说明函数和类的用途
+- 使用 `data-zh` 和 `data-en` 属性实现多语言支持
+
+### 多语言支持
+- 所有用户可见文本都需要中英文对照
+- 使用 `data-zh` 和 `data-en` 属性存储翻译
+- 通过 JavaScript 动态切换语言
+- 支持 URL 参数 `?lang=en` 切换语言
+
+### 无障碍性 (A11y)
+- 添加 `aria-label` 属性为链接提供描述
+- 使用 `aria-labelledby` 关联标题和内容区域
+- 为列表添加 `role="list"` 和 `role="listitem"`
+- 支持键盘导航和屏幕阅读器
+
+### SEO 优化
+- 添加完整的 `<meta>` 标签
+- 使用 Open Graph 标签 (`og:title`, `og:description`, `og:type`)
+- 添加 `hreflang` 链接支持多语言 SEO
+- 动态更新 `document.title` 和 meta 标签
+
+## 文件结构
+```
+afx-team.github.io/
+├── index.html          # 主页面
+├── css/
+│   └── style.css      # 自定义样式
+├── js/
+│   ├── main.js        # 主要功能脚本
+│   └── i18n.js        # 国际化模块
+├── .cursorrules        # Cursor 编辑器规则
+├── biome.json          # Biome 配置
+├── package.json        # 项目配置
+└── README.md          # 项目说明
+```
+
+## 设计原则
+- **简洁优雅**：采用报纸风格设计，注重可读性
+- **内容优先**：强调内容展示，避免过度装饰
+- **响应式设计**：完美适配桌面端和移动端
+- **无障碍设计**：支持各种辅助技术
+- **多语言支持**：完整的中英文切换功能
+
+## 代码质量
+- 使用 Biome 进行代码格式化和检查
+- 保持代码简洁、可读、可维护
+- 添加适当的注释说明复杂逻辑
+- 遵循 DRY (Don't Repeat Yourself) 原则
+
+## 性能优化
+- 使用 CDN 加载 Tailwind CSS
+- 内联关键 CSS 样式
+- 优化字体加载 (`font-family: serif !important`)
+- 使用 Google Analytics 4 进行网站分析
+
+## 开发建议
+- 在修改代码前先理解现有结构
+- 保持与现有设计风格的一致性
+- 测试多语言切换功能
+- 确保无障碍性不受影响
+- 提交前使用 Biome 检查代码质量 
