@@ -112,15 +112,15 @@ p {
 /* ===== 链接样式 ===== */
 a {
   color: var(--color-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--color-text-light);
-  text-underline-offset: 2px;
-  transition: color var(--transition-fast);
+  text-decoration: none;
+  transition: color var(--transition-fast), text-decoration var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-secondary);
+  text-decoration: underline;
   text-decoration-color: var(--color-primary);
+  text-underline-offset: 2px;
 }
 
 a:focus {
