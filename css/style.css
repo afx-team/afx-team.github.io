@@ -399,10 +399,14 @@ hr {
 .h-12 { height: 3rem; }
 
 .min-w-\[60px\] { min-width: 60px; }
+.min-w-0 { min-width: 0; }
 
 .mx-auto { margin-left: auto; margin-right: auto; }
 
 .text-center { text-align: center; }
+
+.flex-1 { flex: 1 1 0%; }
+.flex-shrink-0 { flex-shrink: 0; }
 
 .space-x-2 > * + * {
   margin-left: var(--spacing-sm);
