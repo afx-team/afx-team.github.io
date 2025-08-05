@@ -110,6 +110,11 @@ class I18nManager {
     
     // 更新URL
     this.updateURL(lang);
+    
+    // 分发语言切换事件
+    document.dispatchEvent(new CustomEvent('languageChanged', {
+      detail: { lang: lang }
+    }));
   }
 
   /**
