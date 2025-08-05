@@ -399,39 +399,13 @@ hr {
 .h-12 { height: 3rem; }
 
 .min-w-\[60px\] { min-width: 60px; }
-.min-w-0 { min-width: 0; }
 
 .mx-auto { margin-left: auto; margin-right: auto; }
 
 .text-center { text-align: center; }
 
-.flex-1 { flex: 1 1 0%; }
-.flex-shrink-0 { flex-shrink: 0; }
-
 .space-x-2 > * + * {
   margin-left: var(--spacing-sm);
 }
 
-/* ===== 列表项样式 ===== */
-/* 为列表项添加下边框，但最后一个项目不显示下边框 */
-.list-item-with-border {
-  border-bottom: var(--border-width) solid var(--color-border);
-  padding-bottom: var(--spacing-xs);
-}
 
-.list-item-with-border:last-child {
-  border-bottom: none;
-}
-
-/* 招聘岗位列表项样式 */
-.job-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-xs) 0;
-  border-bottom: var(--border-width) solid var(--color-border);
-}
-
-.job-list-item:last-child {
-  border-bottom: none;
-}
