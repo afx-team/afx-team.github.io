@@ -63,6 +63,11 @@
   color: var(--color-text) !important;
 }
 
+/* 强制覆盖所有边框颜色为棕色系 */
+* {
+  border-color: var(--color-border) !important;
+}
+
 /* 特殊处理链接颜色 */
 a {
   color: var(--color-text) !important;
@@ -344,10 +349,10 @@ hr {
 .border-l-2 { border-left: var(--border-width-thick) solid var(--color-border); }
 .border-l-4 { border-left: var(--border-width-thicker) solid var(--color-border); }
 
-.border-black { border-color: var(--color-primary); }
-.border-gray-200 { border-color: var(--color-border); }
-.border-gray-300 { border-color: var(--color-border-dark); }
-.border-gray-400 { border-color: var(--color-text-lighter); }
+.border-black { border-color: var(--color-border) !important; }
+.border-gray-200 { border-color: var(--color-border) !important; }
+.border-gray-300 { border-color: var(--color-border-dark) !important; }
+.border-gray-400 { border-color: var(--color-border) !important; }
 
 /* ===== 背景工具类 ===== */
 .bg-white { background-color: var(--color-background) !important; }
