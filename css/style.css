@@ -5,17 +5,17 @@
 
 /* ===== 设计系统变量 ===== */
 :root {
-  /* 颜色系统 */
-  --color-primary: #000000;
-  --color-secondary: #333333;
-  --color-text: #111111;
-  --color-text-light: #666666;
-  --color-text-lighter: #999999;
-  --color-border: #e5e5e5;
-  --color-border-dark: #cccccc;
-  --color-background: #ffffff;
-  --color-background-light: #fafafa;
-  --color-background-accent: #f0f0f0;
+  /* 颜色系统 - 牛皮纸风格 */
+  --color-primary: #8B4513;
+  --color-secondary: #A0522D;
+  --color-text: #5D4037;
+  --color-text-light: #8D6E63;
+  --color-text-lighter: #A1887F;
+  --color-border: #D7CCC8;
+  --color-border-dark: #BCAAA4;
+  --color-background: #F4F1E8;
+  --color-background-light: #F0EDE3;
+  --color-background-accent: #EBE6D8;
   
   /* 字体系统 */
   --font-family-primary: serif;
@@ -58,6 +58,20 @@
   box-sizing: border-box;
 }
 
+/* 强制覆盖所有文字颜色为牛皮纸配色 */
+* {
+  color: var(--color-text) !important;
+}
+
+/* 特殊处理链接颜色 */
+a {
+  color: var(--color-text) !important;
+}
+
+a:hover {
+  color: var(--color-primary) !important;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -67,10 +81,19 @@ body {
   font-family: var(--font-family-primary);
   line-height: 1.15;
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--color-background) !important;
   letter-spacing: 0.01em;
   margin: 0;
   padding: 0;
+}
+
+/* 强制覆盖Tailwind CSS的背景色 */
+body.bg-white {
+  background-color: var(--color-background) !important;
+}
+
+html {
+  background-color: var(--color-background) !important;
 }
 
 /* ===== 排版系统 ===== */
@@ -130,6 +153,21 @@ a:focus {
 
 /* ===== 组件样式 ===== */
 
+/* Blockquote 组件 */
+blockquote {
+  background-color: var(--color-background-light) !important;
+  border-left-color: var(--color-text-lighter) !important;
+  color: var(--color-text) !important;
+}
+
+blockquote p {
+  color: var(--color-text) !important;
+}
+
+blockquote div {
+  color: var(--color-text-light) !important;
+}
+
 /* 跳过链接 */
 .skip-link {
   position: absolute;
@@ -180,17 +218,7 @@ a:focus {
   border-color: var(--color-text-light);
 }
 
-/* 引用块组件 */
-blockquote {
-  border-left: var(--border-width-thicker) solid var(--color-text-lighter);
-  padding-left: var(--spacing-md);
-  margin: var(--spacing-lg) 0;
-  font-style: italic;
-  color: var(--color-text);
-  background: var(--color-background-light);
-  padding: var(--spacing-md);
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-}
+/* 引用块组件样式已移到上方统一处理 */
 
 /* 分隔线 */
 hr {
@@ -299,9 +327,10 @@ hr {
 .font-semibold { font-weight: 600; }
 .font-bold { font-weight: 700; }
 
-.text-black { color: var(--color-primary); }
+.text-black { color: var(--color-text); }
 .text-gray-600 { color: var(--color-text-light); }
 .text-gray-700 { color: var(--color-text); }
+.text-gray-900 { color: var(--color-text); }
 
 .tracking-wide { letter-spacing: 0.02em; }
 .tracking-tight { letter-spacing: -0.02em; }
@@ -321,7 +350,7 @@ hr {
 .border-gray-400 { border-color: var(--color-text-lighter); }
 
 /* ===== 背景工具类 ===== */
-.bg-white { background-color: var(--color-background); }
+.bg-white { background-color: var(--color-background) !important; }
 .bg-gray-50 { background-color: var(--color-background-light); }
 
 /* ===== 圆角工具类 ===== */
@@ -370,8 +399,8 @@ hr {
 
 /* ===== 选择文本样式 ===== */
 ::selection {
-  background: var(--color-background-accent);
-  color: var(--color-primary);
+  background: var(--color-border);
+  color: var(--color-text);
 }
 
 /* ===== 焦点样式 ===== */
