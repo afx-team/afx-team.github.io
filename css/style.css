@@ -5,17 +5,17 @@
 
 /* ===== 设计系统变量 ===== */
 :root {
-  /* 颜色系统 */
-  --color-primary: #000000;
-  --color-secondary: #333333;
-  --color-text: #111111;
-  --color-text-light: #666666;
-  --color-text-lighter: #999999;
-  --color-border: #e5e5e5;
-  --color-border-dark: #cccccc;
-  --color-background: #ffffff;
-  --color-background-light: #fafafa;
-  --color-background-accent: #f0f0f0;
+  /* 颜色系统 —— 淡雅牛皮纸风格（极淡，几乎纯白） */
+  --color-primary: #33302a;
+  --color-secondary: #555047;
+  --color-text: #46423a;
+  --color-text-light: #8f8676;
+  --color-text-lighter: #bcb4a4;
+  --color-border: #f0ebe1;
+  --color-border-dark: #e3dccf;
+  --color-background: #fefdfa;
+  --color-background-light: #faf8f2;
+  --color-background-accent: #f5f1e8;
   
   /* 字体系统 */
   --font-family-primary: serif;
@@ -408,4 +408,99 @@ hr {
   margin-left: var(--spacing-sm);
 }
 
+/* ===== 列表项打磨（报纸密排风格下的轻量精修） ===== */
+/* 统一作用于 新闻动态 / 开源产品 / 招聘岗位 列表，复用已有语义结构 */
+[role="list"] > article[role="listitem"] {
+  margin-left: calc(var(--spacing-sm) * -1);
+  margin-right: calc(var(--spacing-sm) * -1);
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast);
+}
+
+/* 列表项之间的发丝级分隔线，增强可扫描性 */
+[role="list"] > article[role="listitem"]:not(:last-child) {
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding-bottom: var(--spacing-xs);
+}
+
+/* 仅在支持悬停的设备上提供背景反馈，避免移动端粘滞高亮 */
+@media (hover: hover) {
+  [role="list"] > article[role="listitem"]:hover {
+    background-color: var(--color-background-light);
+  }
+  /* GitHub → 次级链接箭头悬停微位移 */
+  a.text-gray-600.tracking-wide {
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+  a.text-gray-600.tracking-wide:hover {
+    transform: translateX(2px);
+  }
+}
+
+/* 移动端：增大触摸目标、放宽密排呼吸感 */
+@media (max-width: 768px) {
+  [role="list"] > article[role="listitem"] {
+    padding-top: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  /* header logo 在小屏适度收敛 */
+  .h-16 {
+    height: 3rem;
+  }
+}
+
+/* ===== 牛皮纸主题（覆盖 Tailwind CDN 工具类） ===== */
+/* Tailwind CDN 运行时注入，需用 !important 确保牛皮纸色板生效 */
+body.bg-white {
+  background-color: var(--color-background) !important;
+  /* 纸张纤维质感：双层细微噪点叠加暖色基底 */
+  background-image:
+    radial-gradient(circle at 25% 15%, rgba(150, 125, 85, 0.022) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 75% 65%, rgba(150, 125, 85, 0.016) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(130, 110, 75, 0.012) 0.5px, transparent 0.5px);
+  background-size: 7px 7px, 11px 11px, 13px 13px;
+}
+
+/* 文字颜色 */
+.text-black,
+.bg-white .text-black {
+  color: var(--color-primary) !important;
+}
+.text-gray-900 { color: var(--color-primary) !important; }
+.text-gray-700 { color: var(--color-text) !important; }
+.text-gray-600 { color: var(--color-text-light) !important; }
+.text-gray-400 { color: var(--color-text-lighter) !important; }
+
+/* 边框颜色 */
+.border-black { border-color: var(--color-primary) !important; }
+.border-gray-300 { border-color: var(--color-border-dark) !important; }
+.border-gray-400 { border-color: var(--color-border-dark) !important; }
+.border-b { border-bottom-color: var(--color-border) !important; }
+
+/* 卡片/引用块的浅色底（招聘、文化区块） */
+.bg-gray-50 {
+  background-color: var(--color-background-light) !important;
+}
+
+/* 链接 hover 在牛皮纸上的反馈 */
+a:hover {
+  color: var(--color-secondary);
+  text-decoration-color: var(--color-secondary);
+}
+
+/* 列表项 hover 背景适配牛皮纸 */
+@media (hover: hover) {
+  [role="list"] > article[role="listitem"]:hover {
+    background-color: var(--color-background-light);
+  }
+}
+
+/* 选中文本 */
+::selection {
+  background: var(--color-border-dark);
+  color: var(--color-primary);
+}
 
