@@ -408,4 +408,47 @@ hr {
   margin-left: var(--spacing-sm);
 }
 
+/* ===== 列表项打磨（报纸密排风格下的轻量精修） ===== */
+/* 统一作用于 新闻动态 / 开源产品 / 招聘岗位 列表，复用已有语义结构 */
+[role="list"] > article[role="listitem"] {
+  margin-left: calc(var(--spacing-sm) * -1);
+  margin-right: calc(var(--spacing-sm) * -1);
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast);
+}
+
+/* 列表项之间的发丝级分隔线，增强可扫描性 */
+[role="list"] > article[role="listitem"]:not(:last-child) {
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding-bottom: var(--spacing-xs);
+}
+
+/* 仅在支持悬停的设备上提供背景反馈，避免移动端粘滞高亮 */
+@media (hover: hover) {
+  [role="list"] > article[role="listitem"]:hover {
+    background-color: var(--color-background-light);
+  }
+  /* GitHub → 次级链接箭头悬停微位移 */
+  a.text-gray-600.tracking-wide {
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+  a.text-gray-600.tracking-wide:hover {
+    transform: translateX(2px);
+  }
+}
+
+/* 移动端：增大触摸目标、放宽密排呼吸感 */
+@media (max-width: 768px) {
+  [role="list"] > article[role="listitem"] {
+    padding-top: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  /* header logo 在小屏适度收敛 */
+  .h-16 {
+    height: 3rem;
+  }
+}
 
