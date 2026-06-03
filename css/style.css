@@ -5,17 +5,17 @@
 
 /* ===== 设计系统变量 ===== */
 :root {
-  /* 颜色系统 */
-  --color-primary: #000000;
-  --color-secondary: #333333;
-  --color-text: #111111;
-  --color-text-light: #666666;
-  --color-text-lighter: #999999;
-  --color-border: #e5e5e5;
-  --color-border-dark: #cccccc;
-  --color-background: #ffffff;
-  --color-background-light: #fafafa;
-  --color-background-accent: #f0f0f0;
+  /* 颜色系统 —— 牛皮纸风格 */
+  --color-primary: #3a2e1f;
+  --color-secondary: #5a4a35;
+  --color-text: #4a3b28;
+  --color-text-light: #7a6a52;
+  --color-text-lighter: #a8967a;
+  --color-border: #c9b896;
+  --color-border-dark: #b8a47e;
+  --color-background: #e8dcc0;
+  --color-background-light: #ddd0b0;
+  --color-background-accent: #d4c4a0;
   
   /* 字体系统 */
   --font-family-primary: serif;
@@ -450,5 +450,57 @@ hr {
   .h-16 {
     height: 3rem;
   }
+}
+
+/* ===== 牛皮纸主题（覆盖 Tailwind CDN 工具类） ===== */
+/* Tailwind CDN 运行时注入，需用 !important 确保牛皮纸色板生效 */
+body.bg-white {
+  background-color: var(--color-background) !important;
+  /* 纸张纤维质感：双层细微噪点叠加暖色基底 */
+  background-image:
+    radial-gradient(circle at 25% 15%, rgba(120, 90, 50, 0.05) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 75% 65%, rgba(120, 90, 50, 0.04) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(90, 70, 40, 0.03) 0.5px, transparent 0.5px);
+  background-size: 7px 7px, 11px 11px, 13px 13px;
+}
+
+/* 文字颜色 */
+.text-black,
+.bg-white .text-black {
+  color: var(--color-primary) !important;
+}
+.text-gray-900 { color: var(--color-primary) !important; }
+.text-gray-700 { color: var(--color-text) !important; }
+.text-gray-600 { color: var(--color-text-light) !important; }
+.text-gray-400 { color: var(--color-text-lighter) !important; }
+
+/* 边框颜色 */
+.border-black { border-color: var(--color-primary) !important; }
+.border-gray-300 { border-color: var(--color-border-dark) !important; }
+.border-gray-400 { border-color: var(--color-border-dark) !important; }
+.border-b { border-bottom-color: var(--color-border) !important; }
+
+/* 卡片/引用块的浅色底（招聘、文化区块） */
+.bg-gray-50 {
+  background-color: var(--color-background-light) !important;
+}
+
+/* 链接 hover 在牛皮纸上的反馈 */
+a:hover {
+  color: var(--color-secondary);
+  text-decoration-color: var(--color-secondary);
+}
+
+/* 列表项 hover 背景适配牛皮纸 */
+@media (hover: hover) {
+  [role="list"] > article[role="listitem"]:hover {
+    background-color: var(--color-background-light);
+  }
+}
+
+/* 选中文本 */
+::selection {
+  background: var(--color-border-dark);
+  color: var(--color-primary);
 }
 
