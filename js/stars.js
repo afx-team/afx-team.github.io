@@ -88,25 +88,6 @@
     return total;
   }
 
-  /** 取 star：优先缓存，其次 API，最后回退写死兜底值 */
-  async function getStars(target, cache) {
-    const cached = cache[target];
-    if (cached && Date.now() - cached.ts < CACHE_TTL) {
-      return cached.stars;
-    }
-    try {
-      const stars = ORG_AGGREGATE[target]
-        ? await fetchOrgStars(target)
-        : await fetchRepoStars(target);
-      cache[target] = { stars, ts: Date.now() };
-      return stars;
-    } catch {
-      // 过期缓存 > 写死兜底
-      if (cached) return cached.stars;
-      return FALLBACK[target] != null ? FALLBACK[target] : null;
-    }
-  }
-
   function renderStar(article, stars) {
     const h3 = article.querySelector('h3');
     if (!h3) return;
@@ -114,10 +95,19 @@
     if (!badge) {
       badge = document.createElement('span');
       badge.className = 'repo-stars text-xs text-gray-600 tracking-wide';
-      badge.setAttribute('aria-label', `${stars} stars`);
       h3.appendChild(badge);
     }
+    badge.setAttribute('aria-label', `${stars} stars`);
     badge.textContent = `★ ${formatStars(stars)}`;
+  }
+
+  /** 获取本地可用 star：优先未过期缓存，其次兜底值 */
+  function getLocalStars(target, cache) {
+    const cached = cache[target];
+    if (cached && Date.now() - cached.ts < CACHE_TTL) {
+      return cached.stars;
+    }
+    return FALLBACK[target] != null ? FALLBACK[target] : null;
   }
 
   async function init() {
@@ -131,21 +121,42 @@
     );
     const cache = loadCache();
 
-    const entries = await Promise.all(
-      articles.map(async (article) => {
-        const target = parseTarget(article);
-        const stars = target ? await getStars(target, cache) : null;
-        if (stars != null) renderStar(article, stars);
-        return { article, stars: stars == null ? -1 : stars };
-      })
-    );
-    saveCache(cache);
+    // 1. 同步阶段：立即用缓存或兜底值渲染+排序，防止 CLS 布局偏移
+    const entries = articles.map((article) => {
+      const target = parseTarget(article);
+      const localStars = target ? getLocalStars(target, cache) : null;
+      if (localStars != null) renderStar(article, localStars);
+      return {
+        article,
+        target,
+        stars: localStars == null ? -1 : localStars,
+        needsRefresh: target != null && localStars == null,
+      };
+    });
 
-    // 按 star 降序重排，无数据（-1）排到最后
     entries.sort((a, b) => b.stars - a.stars);
     entries.forEach((entry) => {
       list.appendChild(entry.article);
     });
+
+    // 2. 异步阶段：后台静默更新过期/缺失的缓存，仅更新徽章文本，不重排
+    const updatePromises = entries.map(async (entry) => {
+      if (!entry.target) return;
+      const cached = cache[entry.target];
+      if (cached && Date.now() - cached.ts < CACHE_TTL) return; // 缓存未过期，跳过
+      try {
+        const stars = ORG_AGGREGATE[entry.target]
+          ? await fetchOrgStars(entry.target)
+          : await fetchRepoStars(entry.target);
+        cache[entry.target] = { stars, ts: Date.now() };
+        renderStar(entry.article, stars);
+      } catch {
+        // 请求失败，保持本地渲染状态
+      }
+    });
+
+    await Promise.all(updatePromises);
+    saveCache(cache);
   }
 
   if (document.readyState === 'loading') {
