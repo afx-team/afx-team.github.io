@@ -5,17 +5,17 @@
 
 /* ===== 设计系统变量 ===== */
 :root {
-  /* 颜色系统 —— 淡雅牛皮纸风格（接近白色） */
-  --color-primary: #3a3128;
-  --color-secondary: #5a4f40;
-  --color-text: #4a4035;
-  --color-text-light: #8a7d6a;
-  --color-text-lighter: #b5a892;
-  --color-border: #e8e0d0;
-  --color-border-dark: #d8cdb8;
-  --color-background: #faf6ee;
-  --color-background-light: #f4eee2;
-  --color-background-accent: #efe7d8;
+  /* 颜色系统 —— 淡雅牛皮纸风格（极淡，几乎纯白） */
+  --color-primary: #33302a;
+  --color-secondary: #555047;
+  --color-text: #46423a;
+  --color-text-light: #8f8676;
+  --color-text-lighter: #bcb4a4;
+  --color-border: #f0ebe1;
+  --color-border-dark: #e3dccf;
+  --color-background: #fefdfa;
+  --color-background-light: #faf8f2;
+  --color-background-accent: #f5f1e8;
   
   /* 字体系统 */
   --font-family-primary: serif;
@@ -458,9 +458,9 @@ body.bg-white {
   background-color: var(--color-background) !important;
   /* 纸张纤维质感：双层细微噪点叠加暖色基底 */
   background-image:
-    radial-gradient(circle at 25% 15%, rgba(150, 125, 85, 0.035) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 75% 65%, rgba(150, 125, 85, 0.025) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 50% 90%, rgba(130, 110, 75, 0.02) 0.5px, transparent 0.5px);
+    radial-gradient(circle at 25% 15%, rgba(150, 125, 85, 0.022) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 75% 65%, rgba(150, 125, 85, 0.016) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(130, 110, 75, 0.012) 0.5px, transparent 0.5px);
   background-size: 7px 7px, 11px 11px, 13px 13px;
 }
 
