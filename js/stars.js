@@ -6,7 +6,7 @@
  * - 使用 localStorage 缓存（6 小时）缓解 GitHub 匿名 API 限流（60 次/小时）。
  * - API 限流或请求失败时，回退到写死的兜底值，保证显示与排序稳定。
  */
-(function () {
+(() => {
   const CACHE_KEY = 'afx-gh-stars';
   const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 小时
 
@@ -45,7 +45,7 @@
 
   /** 1234 → 1.2k */
   function formatStars(n) {
-    if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k`;
     return String(n);
   }
 
@@ -126,7 +126,9 @@
     const list = section.querySelector('[role="list"]');
     if (!list) return;
 
-    const articles = Array.from(list.querySelectorAll('article[role="listitem"]'));
+    const articles = Array.from(
+      list.querySelectorAll('article[role="listitem"]')
+    );
     const cache = loadCache();
 
     const entries = await Promise.all(
@@ -141,7 +143,9 @@
 
     // 按 star 降序重排，无数据（-1）排到最后
     entries.sort((a, b) => b.stars - a.stars);
-    entries.forEach((entry) => list.appendChild(entry.article));
+    entries.forEach((entry) => {
+      list.appendChild(entry.article);
+    });
   }
 
   if (document.readyState === 'loading') {
