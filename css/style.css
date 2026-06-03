@@ -504,3 +504,11 @@ a:hover {
   color: var(--color-primary);
 }
 
+
+/* ===== 开源产品 Star 徽章 ===== */
+.repo-stars {
+  margin-left: var(--spacing-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-text-light);
+}
