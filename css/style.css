@@ -18,7 +18,7 @@
   --color-background-accent: #f5f1e8;
   
   /* 字体系统 */
-  --font-family-primary: serif;
+  --font-family-primary: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "Microsoft YaHei UI", "Microsoft YaHei", serif;
   --font-family-mono: monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

@@ -16,18 +16,18 @@
   // 写死兜底值：API 限流或失败时使用。数值会随时间略有偏差，定期更新即可。
   const FALLBACK = {
     'ant-design': 192115,
-    'eggjs/egg': 18995,
-    'umijs/qiankun': 16612,
-    'umijs/umi': 16031,
+    'eggjs/egg': 18998,
+    'umijs/qiankun': 16611,
+    'umijs/umi': 16030,
     'umijs/dumi': 3794,
     'neovateai/neovate-code': 1538,
     'afx-team/petercat': 1489,
-    'utooland/utoo': 2490,
+    'utooland/utoo': 2491,
     'cnpm/cnpm': 2098,
     'galacean/effects-runtime': 611,
     'afx-team/UI-UG': 86,
     'unieojs/unieo': 32,
-    'afx-team/evjs': 13,
+    'afx-team/evjs': 16,
     'afx-team/WhiskerRAG': 11,
     'afx-team/hebb-mind': 6,
   };

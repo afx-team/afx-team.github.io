@@ -120,7 +120,7 @@ main .gsc-comment-content,
 main button,
 main input,
 main textarea {
-  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+  font-family: Georgia, "Times New Roman", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "Microsoft YaHei UI", "Microsoft YaHei", serif;
   letter-spacing: 0.01em;
 }
 
