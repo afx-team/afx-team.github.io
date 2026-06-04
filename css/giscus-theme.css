@@ -141,11 +141,23 @@ main .gsc-comments {
   margin-top: 0;
 }
 
-/* ===== 评论卡片去气泡化：贴合页面「无框 + 发丝分隔线」的报纸列表风格 =====
-   页面整体不用描边卡片，而是靠横向发丝线 + 留白区分内容。giscus 默认是
-   GitHub 风格的圆角描边气泡，与之冲突，这里把评论改写成无框列表项。 */
+/* ===== 线条预算 =====
+   页面是极简印刷风：靠「留白 + 浅色背景块」区分内容，几乎不用描边。
+   整个评论区只保留一种横线——评论与评论之间的发丝分隔线。
+   输入区改用极淡牛皮纸背景块界定（呼应页面 bg-gray-50 招聘区块），
+   折叠态回复入口是纯文字链接，其余一律无框无线。 */
 
-/* 单条评论：去掉圆角描边气泡，仅用底部一条发丝线分隔，复刻页面列表观感 */
+/* 反应区 / 评论数标题 / 分页等区块的分隔线一律去掉，仅靠留白分区 */
+main .gsc-header,
+main .gsc-comments-count,
+main .gsc-timeline,
+main .gsc-reactions,
+main .gsc-comment-reactions,
+main .pagination-loader-container {
+  border: none !important;
+}
+
+/* --- 评论列表：无气泡、无卡片，仅底部一条发丝分隔线 --- */
 main .gsc-comment > div {
   border: none !important;
   border-radius: 0 !important;
@@ -158,96 +170,89 @@ main .gsc-comment {
   padding-bottom: 0.25rem;
 }
 
-/* 评论头部：去掉与正文之间的描边，仅保留留白 */
+/* 评论头部：去掉描边与指向气泡的小箭头 */
 main .gsc-comment-header {
   border-bottom: none !important;
   background: transparent !important;
 }
 
-/* 头部那个指向气泡的小箭头（::before/::after 描边三角）随气泡一起隐去 */
 main .gsc-comment-header::before,
 main .gsc-comment-header::after {
   display: none !important;
 }
 
-/* 嵌套回复区：去掉灰底块与左竖线，改用极淡发丝线表示层级 */
+/* 嵌套回复区：去掉灰底块与所有边框，纯靠缩进表示层级 */
 main .gsc-replies {
   background: transparent !important;
   border: none !important;
-  border-left: 1px solid var(--color-border-muted) !important;
   border-radius: 0 !important;
 }
 
-/* ===== 输入区：与评论一致的无框风格，仅用一条书写线提示输入边界 ===== */
-
-/* 外层评论框：去掉外框与圆角，融入页面留白，避免突兀的卡片感 */
+/* --- 输入区：一块极淡牛皮纸背景界定，内部完全无框无线 --- */
 main .gsc-comment-box {
   border: none !important;
-  border-radius: 0 !important;
-  overflow: hidden;
+  border-radius: 0.25rem;
   box-shadow: none !important;
-  background: transparent !important;
+  background: var(--color-background-light) !important;
+  overflow: hidden;
 }
 
-/* tabs 容器：去掉自身边框与异色底，融入背景 */
-main .gsc-comment-box-tabs {
-  border: none !important;
-  background: transparent !important;
-}
-
-/* Write / Preview 标签按钮：去掉各自描边，仅用底色/文字色区分激活态 */
+/* 输入区内所有层级（tabs / 标签按钮 / textarea / 预览 / 工具栏）：
+   去边框、去独立背景，全部融入同一个色块，消除内部分隔线 */
+main .gsc-comment-box-tabs,
 main .gsc-comment-box-tabs button,
-main .gsc-comment-box-tabs .rounded-t {
-  border: none !important;
-}
-
-/* textarea：去掉四周边框，仅保留一条发丝下边线作为「书写线」提示输入区 */
+main .gsc-comment-box-tabs .rounded-t,
 main .gsc-comment-box-textarea,
 main .gsc-comment-box-textarea-extras,
-main .gsc-comment-box-preview {
+main .gsc-comment-box-preview,
+main .gsc-comment-box-md-toolbar,
+main .gsc-comment-box-write {
   border: none !important;
+  background: transparent !important;
   box-shadow: none !important;
+}
+
+/* 聚焦输入区时背景略加深，作为唯一的焦点反馈（无线无框） */
+main .gsc-comment-box:focus-within {
+  background: var(--color-background-accent) !important;
+}
+
+/* --- 折叠态「回复」入口：纯文字链接，无线无背景，hover 变色 --- */
+main .gsc-reply-box {
   background: transparent !important;
 }
 
-main .gsc-comment-box-textarea {
-  border-bottom: 1px solid var(--color-border-default) !important;
+main .gsc-reply-box button {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--color-fg-subtle) !important;
+  padding-left: 0 !important;
 }
 
-/* textarea 聚焦时书写线加深，作为轻量焦点反馈（替代外框高亮） */
-main .gsc-comment-box-textarea:focus-within {
-  border-bottom-color: var(--color-accent-emphasis) !important;
+main .gsc-reply-box button:hover {
+  color: var(--color-accent-emphasis) !important;
 }
 
-/* 顶部 tabs 与下方内容之间用一条发丝线收口，替代原本的多条边框 */
-main .gsc-comment-box-md-toolbar,
-main .gsc-comment-box-write {
-  border-top: 1px solid var(--color-border-muted);
-}
-
-/* ===== 焦点框：彻底消除浏览器默认蓝色 outline（iframe 内部元素）===== */
-/* 原生 outline:auto 会忽略 outline-color，必须显式用 solid 才能改色；
-   配合 focus-visible 仅在键盘导航时显示，鼠标点击不残留蓝框。
-   注：评论区整体外框的蓝色焦点环来自父页面的 <iframe>，已在 style.css 处理。 */
+/* ===== 焦点框：消除浏览器默认蓝色 outline（iframe 内部元素）=====
+   评论区整体外框的蓝色焦点环来自父页面 <iframe>，已在 style.css 处理。 */
 main *:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
-/* 小控件（按钮 / 链接 / 反应表情等）键盘聚焦时给一条柔和发丝轮廓 */
+/* 小控件（按钮 / 链接 / 反应表情）键盘聚焦时给一条柔和发丝轮廓；
+   输入区不参与（背景块已界定区域），避免大输入框被描边包住 */
 main *:focus-visible {
   outline: 1px solid var(--color-accent-muted) !important;
   outline-offset: 2px;
   box-shadow: none !important;
 }
 
-/* 输入区容器及其所有后代：不使用 outline，避免大输入框被 2px 墨框包住，
-   焦点反馈统一由 textarea 的「书写线」变色承担（见上方 :focus-within 规则） */
 main .gsc-comment-box,
 main .gsc-comment-box *:focus,
-main .gsc-comment-box *:focus-visible,
-main .gsc-comment-box-textarea:focus,
-main .gsc-comment-box-textarea:focus-visible {
+main .gsc-comment-box *:focus-visible {
   outline: none !important;
 }
 
@@ -256,24 +261,4 @@ main a:hover {
   text-decoration: underline;
   text-decoration-color: var(--color-accent-emphasis);
   text-underline-offset: 2px;
-}
-
-/* ===== 折叠态回复框（点击展开前的「回复」占位）===== */
-/* 默认是带圆角描边的按钮卡片 + 异色底，与无框书写线风格不一致。
-   改为去底色、去圆角描边，仅保留一条发丝下边线，和展开态 textarea 统一。 */
-main .gsc-reply-box {
-  background: transparent !important;
-}
-
-main .gsc-reply-box button {
-  border: none !important;
-  border-bottom: 1px solid var(--color-border-default) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  color: var(--color-fg-subtle) !important;
-}
-
-main .gsc-reply-box button:hover {
-  border-bottom-color: var(--color-accent-emphasis) !important;
 }
