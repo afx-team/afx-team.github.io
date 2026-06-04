@@ -178,17 +178,18 @@ main .gsc-replies {
   border-radius: 0 !important;
 }
 
-/* ===== 输入区：保留一条极淡外框以界定输入边界，去掉所有内部堆叠线 ===== */
+/* ===== 输入区：与评论一致的无框风格，仅用一条书写线提示输入边界 ===== */
 
-/* 外层评论框：唯一保留的发丝外框，作为输入区的单层卡片 */
+/* 外层评论框：去掉外框与圆角，融入页面留白，避免突兀的卡片感 */
 main .gsc-comment-box {
-  border: 1px solid var(--color-border-muted) !important;
-  border-radius: 0.25rem;
+  border: none !important;
+  border-radius: 0 !important;
   overflow: hidden;
   box-shadow: none !important;
+  background: transparent !important;
 }
 
-/* tabs 容器：去掉自身边框与异色底，融入卡片 */
+/* tabs 容器：去掉自身边框与异色底，融入背景 */
 main .gsc-comment-box-tabs {
   border: none !important;
   background: transparent !important;
@@ -200,12 +201,22 @@ main .gsc-comment-box-tabs .rounded-t {
   border: none !important;
 }
 
-/* textarea 与 markdown 提示行：去掉内部边框，仅靠卡片外框收口 */
+/* textarea：去掉四周边框，仅保留一条发丝下边线作为「书写线」提示输入区 */
 main .gsc-comment-box-textarea,
 main .gsc-comment-box-textarea-extras,
 main .gsc-comment-box-preview {
   border: none !important;
   box-shadow: none !important;
+  background: transparent !important;
+}
+
+main .gsc-comment-box-textarea {
+  border-bottom: 1px solid var(--color-border-default) !important;
+}
+
+/* textarea 聚焦时书写线加深，作为轻量焦点反馈（替代外框高亮） */
+main .gsc-comment-box-textarea:focus-within {
+  border-bottom-color: var(--color-accent-emphasis) !important;
 }
 
 /* 顶部 tabs 与下方内容之间用一条发丝线收口，替代原本的多条边框 */
