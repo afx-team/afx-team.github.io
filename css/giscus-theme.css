@@ -148,10 +148,39 @@ main .gsc-comment .gsc-comment-content {
   border-radius: 0.25rem;
 }
 
-/* 评论之间的发丝级分隔，沿用页面列表分隔风格 */
-main .gsc-timeline > .gsc-comment:not(:last-child) {
-  border-bottom: 1px solid var(--color-border-muted);
-  padding-bottom: 0.5rem;
+/* 弱化线条：评论气泡本身已有边框，去掉头部箭头、内部分隔等冗余线条，
+   保持页面极简印刷风格，避免「线条太多」的杂乱感 */
+main .gsc-comment-header,
+main .gsc-reply .gsc-comment-header {
+  border-bottom: none;
+}
+
+/* 评论正文与底部反应区之间不再额外描边 */
+main .gsc-comment-content,
+main .gsc-comment-footer {
+  border-top: none;
+}
+
+/* 回复折叠线（嵌套回复左侧竖线）减淡到发丝级，融入背景 */
+main .gsc-replies,
+main .gsc-comment-replies {
+  border-color: var(--color-border-muted);
+}
+
+/* 焦点轮廓：统一为墨色，消除切换 Write/Preview tab 后残留的蓝色 focus 框 */
+main *:focus,
+main *:focus-visible,
+main button:focus,
+main button:focus-visible,
+main .gsc-comment-box-tabs button:focus,
+main .gsc-comment-box-tabs button:focus-visible {
+  outline-color: var(--color-accent-emphasis);
+  box-shadow: none;
+}
+
+/* tab 按钮去掉非激活态边框，仅激活态保留底色，避免点击后残留描边 */
+main .gsc-comment-box-tabs button {
+  outline: none;
 }
 
 /* 链接 hover：暖色下划线，与正文链接一致 */
