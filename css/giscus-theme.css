@@ -141,30 +141,60 @@ main .gsc-comments {
   margin-top: 0;
 }
 
-/* 输入框/卡片统一小圆角，呼应 style.css 的 0.25rem 圆角语言 */
-main .gsc-comment-box,
-main .gsc-comment > .gsc-comment-box,
-main .gsc-comment-box-textarea,
-main .gsc-reactions-popover,
-main .gsc-comment .gsc-comment-content {
-  border-radius: 0.25rem;
+/* ===== 评论卡片去气泡化：贴合页面「无框 + 发丝分隔线」的报纸列表风格 =====
+   页面整体不用描边卡片，而是靠横向发丝线 + 留白区分内容。giscus 默认是
+   GitHub 风格的圆角描边气泡，与之冲突，这里把评论改写成无框列表项。 */
+
+/* 单条评论：去掉圆角描边气泡，仅用底部一条发丝线分隔，复刻页面列表观感 */
+main .gsc-comment > div {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
-/* ===== 拍平输入区：只保留最外层一条边框，消除多层堆叠的杂乱线条 ===== */
+main .gsc-comment {
+  border-bottom: 1px solid var(--color-border-muted);
+  padding-bottom: 0.25rem;
+}
 
-/* 外层评论框：唯一保留的边框，作为整个输入区的单层卡片 */
+/* 评论头部：去掉与正文之间的描边，仅保留留白 */
+main .gsc-comment-header {
+  border-bottom: none !important;
+  background: transparent !important;
+}
+
+/* 头部那个指向气泡的小箭头（::before/::after 描边三角）随气泡一起隐去 */
+main .gsc-comment-header::before,
+main .gsc-comment-header::after {
+  display: none !important;
+}
+
+/* 嵌套回复区：去掉灰底块与左竖线，改用极淡发丝线表示层级 */
+main .gsc-replies {
+  background: transparent !important;
+  border: none !important;
+  border-left: 1px solid var(--color-border-muted) !important;
+  border-radius: 0 !important;
+}
+
+/* ===== 输入区：保留一条极淡外框以界定输入边界，去掉所有内部堆叠线 ===== */
+
+/* 外层评论框：唯一保留的发丝外框，作为输入区的单层卡片 */
 main .gsc-comment-box {
-  border: 1px solid var(--color-border-default);
+  border: 1px solid var(--color-border-muted) !important;
+  border-radius: 0.25rem;
   overflow: hidden;
+  box-shadow: none !important;
 }
 
-/* tabs 容器：去掉自身边框与异色底，融入卡片，避免与外框形成双线 */
+/* tabs 容器：去掉自身边框与异色底，融入卡片 */
 main .gsc-comment-box-tabs {
   border: none !important;
   background: transparent !important;
 }
 
-/* Write / Preview 标签按钮：去掉各自的描边，仅用底色/文字色区分激活态 */
+/* Write / Preview 标签按钮：去掉各自描边，仅用底色/文字色区分激活态 */
 main .gsc-comment-box-tabs button,
 main .gsc-comment-box-tabs .rounded-t {
   border: none !important;
@@ -184,21 +214,10 @@ main .gsc-comment-box-write {
   border-top: 1px solid var(--color-border-muted);
 }
 
-/* ===== 弱化评论列表线条 ===== */
-
-/* 评论头部/底部不再额外描边，箭头气泡感保留但更轻 */
-main .gsc-comment-header {
-  border-bottom: none;
-}
-
-/* 嵌套回复左侧竖线减淡到发丝级，融入背景 */
-main .gsc-replies {
-  border-color: var(--color-border-muted);
-}
-
-/* ===== 焦点框：彻底消除浏览器默认蓝色 outline ===== */
+/* ===== 焦点框：彻底消除浏览器默认蓝色 outline（iframe 内部元素）===== */
 /* 原生 outline:auto 会忽略 outline-color，必须显式用 solid 才能改色；
-   配合 focus-visible 仅在键盘导航时显示，鼠标点击 tab 后不再残留蓝框 */
+   配合 focus-visible 仅在键盘导航时显示，鼠标点击不残留蓝框。
+   注：评论区整体外框的蓝色焦点环来自父页面的 <iframe>，已在 style.css 处理。 */
 main *:focus {
   outline: none !important;
   box-shadow: none !important;
