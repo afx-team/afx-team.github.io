@@ -234,10 +234,21 @@ main *:focus {
   box-shadow: none !important;
 }
 
+/* 小控件（按钮 / 链接 / 反应表情等）键盘聚焦时给一条柔和发丝轮廓 */
 main *:focus-visible {
-  outline: 2px solid var(--color-accent-emphasis) !important;
-  outline-offset: 1px;
+  outline: 1px solid var(--color-accent-muted) !important;
+  outline-offset: 2px;
   box-shadow: none !important;
+}
+
+/* 输入区容器及其所有后代：不使用 outline，避免大输入框被 2px 墨框包住，
+   焦点反馈统一由 textarea 的「书写线」变色承担（见上方 :focus-within 规则） */
+main .gsc-comment-box,
+main .gsc-comment-box *:focus,
+main .gsc-comment-box *:focus-visible,
+main .gsc-comment-box-textarea:focus,
+main .gsc-comment-box-textarea:focus-visible {
+  outline: none !important;
 }
 
 /* 链接 hover：暖色下划线，与正文链接一致 */
