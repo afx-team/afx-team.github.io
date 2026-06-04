@@ -3,6 +3,8 @@
  * 配色与字体对齐 css/style.css 的设计系统变量，使评论区与页面风格一致
  */
 
+/* biome-ignore-all lint/complexity/noImportantStyles: 覆盖 giscus iframe 内置 Tailwind 工具类样式必须用 !important */
+
 main {
   /* 语法高亮（代码块）保留原 light 主题配色，仅微调以贴合暖色基底 */
   --color-prettylights-syntax-comment: #8f8676;
@@ -148,39 +150,64 @@ main .gsc-comment .gsc-comment-content {
   border-radius: 0.25rem;
 }
 
-/* 弱化线条：评论气泡本身已有边框，去掉头部箭头、内部分隔等冗余线条，
-   保持页面极简印刷风格，避免「线条太多」的杂乱感 */
-main .gsc-comment-header,
-main .gsc-reply .gsc-comment-header {
+/* ===== 拍平输入区：只保留最外层一条边框，消除多层堆叠的杂乱线条 ===== */
+
+/* 外层评论框：唯一保留的边框，作为整个输入区的单层卡片 */
+main .gsc-comment-box {
+  border: 1px solid var(--color-border-default);
+  overflow: hidden;
+}
+
+/* tabs 容器：去掉自身边框与异色底，融入卡片，避免与外框形成双线 */
+main .gsc-comment-box-tabs {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Write / Preview 标签按钮：去掉各自的描边，仅用底色/文字色区分激活态 */
+main .gsc-comment-box-tabs button,
+main .gsc-comment-box-tabs .rounded-t {
+  border: none !important;
+}
+
+/* textarea 与 markdown 提示行：去掉内部边框，仅靠卡片外框收口 */
+main .gsc-comment-box-textarea,
+main .gsc-comment-box-textarea-extras,
+main .gsc-comment-box-preview {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 顶部 tabs 与下方内容之间用一条发丝线收口，替代原本的多条边框 */
+main .gsc-comment-box-md-toolbar,
+main .gsc-comment-box-write {
+  border-top: 1px solid var(--color-border-muted);
+}
+
+/* ===== 弱化评论列表线条 ===== */
+
+/* 评论头部/底部不再额外描边，箭头气泡感保留但更轻 */
+main .gsc-comment-header {
   border-bottom: none;
 }
 
-/* 评论正文与底部反应区之间不再额外描边 */
-main .gsc-comment-content,
-main .gsc-comment-footer {
-  border-top: none;
-}
-
-/* 回复折叠线（嵌套回复左侧竖线）减淡到发丝级，融入背景 */
-main .gsc-replies,
-main .gsc-comment-replies {
+/* 嵌套回复左侧竖线减淡到发丝级，融入背景 */
+main .gsc-replies {
   border-color: var(--color-border-muted);
 }
 
-/* 焦点轮廓：统一为墨色，消除切换 Write/Preview tab 后残留的蓝色 focus 框 */
-main *:focus,
-main *:focus-visible,
-main button:focus,
-main button:focus-visible,
-main .gsc-comment-box-tabs button:focus,
-main .gsc-comment-box-tabs button:focus-visible {
-  outline-color: var(--color-accent-emphasis);
-  box-shadow: none;
+/* ===== 焦点框：彻底消除浏览器默认蓝色 outline ===== */
+/* 原生 outline:auto 会忽略 outline-color，必须显式用 solid 才能改色；
+   配合 focus-visible 仅在键盘导航时显示，鼠标点击 tab 后不再残留蓝框 */
+main *:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-/* tab 按钮去掉非激活态边框，仅激活态保留底色，避免点击后残留描边 */
-main .gsc-comment-box-tabs button {
-  outline: none;
+main *:focus-visible {
+  outline: 2px solid var(--color-accent-emphasis) !important;
+  outline-offset: 1px;
+  box-shadow: none !important;
 }
 
 /* 链接 hover：暖色下划线，与正文链接一致 */
