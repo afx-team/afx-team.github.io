@@ -257,3 +257,23 @@ main a:hover {
   text-decoration-color: var(--color-accent-emphasis);
   text-underline-offset: 2px;
 }
+
+/* ===== 折叠态回复框（点击展开前的「回复」占位）===== */
+/* 默认是带圆角描边的按钮卡片 + 异色底，与无框书写线风格不一致。
+   改为去底色、去圆角描边，仅保留一条发丝下边线，和展开态 textarea 统一。 */
+main .gsc-reply-box {
+  background: transparent !important;
+}
+
+main .gsc-reply-box button {
+  border: none !important;
+  border-bottom: 1px solid var(--color-border-default) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--color-fg-subtle) !important;
+}
+
+main .gsc-reply-box button:hover {
+  border-bottom-color: var(--color-accent-emphasis) !important;
+}
