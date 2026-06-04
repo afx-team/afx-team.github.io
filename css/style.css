@@ -512,3 +512,19 @@ a:hover {
   white-space: nowrap;
   color: var(--color-text-light);
 }
+
+/* ===== Giscus 评论区 iframe（父页面侧）===== */
+/* giscus 通过 <iframe class="giscus-frame"> 嵌入，是父页面的元素。
+   Firefox 等浏览器在窗口/标签页重新获得焦点时，会给曾被点击过的 iframe
+   绘制默认蓝色焦点环——这无法在 iframe 内部主题 CSS 中消除，必须在父页面
+   覆盖。统一去掉外框，保持评论区与页面一致的无边框留白风格。 */
+.giscus,
+.giscus-frame {
+  border: none;
+  outline: none;
+}
+
+.giscus-frame:focus,
+.giscus-frame:focus-visible {
+  outline: none;
+}
