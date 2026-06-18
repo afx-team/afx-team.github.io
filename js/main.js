@@ -28,7 +28,10 @@ class WebsiteManager {
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
-        this.updateMenuButton(mobileMenuBtn, mobileMenu.classList.contains('hidden'));
+        this.updateMenuButton(
+          mobileMenuBtn,
+          mobileMenu.classList.contains('hidden')
+        );
       });
     }
   }
@@ -49,7 +52,7 @@ class WebsiteManager {
    */
   setupSmoothScrolling() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     anchorLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -72,7 +75,7 @@ class WebsiteManager {
 
     window.scrollTo({
       top: elementPosition,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 
@@ -90,12 +93,12 @@ class WebsiteManager {
    */
   setupCards() {
     const cards = document.querySelectorAll('.card');
-    
+
     cards.forEach((card) => {
       card.addEventListener('click', () => {
         this.handleCardClick(card);
       });
-      
+
       // 键盘导航支持
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -112,7 +115,7 @@ class WebsiteManager {
   handleCardClick(card) {
     // 添加点击反馈
     card.style.borderColor = 'var(--color-text-lighter)';
-    
+
     // 重置样式
     setTimeout(() => {
       card.style.borderColor = '';
@@ -124,7 +127,7 @@ class WebsiteManager {
    */
   setupTags() {
     const tags = document.querySelectorAll('.tag');
-    
+
     tags.forEach((tag) => {
       tag.addEventListener('click', () => {
         this.handleTagClick(tag);
@@ -137,7 +140,7 @@ class WebsiteManager {
    */
   handleTagClick(tag) {
     tag.style.backgroundColor = 'var(--color-border)';
-    
+
     setTimeout(() => {
       tag.style.backgroundColor = '';
     }, 200);
@@ -148,7 +151,7 @@ class WebsiteManager {
    */
   setupLinks() {
     const externalLinks = document.querySelectorAll('a[target="_blank"]');
-    
+
     externalLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         this.handleExternalLinkClick(e, link);
@@ -159,8 +162,7 @@ class WebsiteManager {
   /**
    * 处理外部链接点击
    */
-  handleExternalLinkClick(e, link) {
-    // 可以在这里添加分析代码
+  handleExternalLinkClick(_e, link) {
     console.log('External link clicked:', link.href);
   }
 
@@ -178,13 +180,13 @@ class WebsiteManager {
    */
   setupSkipLinks() {
     const skipLinks = document.querySelectorAll('.skip-link');
-    
+
     skipLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-        
+
         if (targetElement) {
           targetElement.focus();
           this.scrollToElement(targetElement);
@@ -201,7 +203,7 @@ class WebsiteManager {
     document.addEventListener('focusin', (e) => {
       this.handleFocusIn(e);
     });
-    
+
     document.addEventListener('focusout', (e) => {
       this.handleFocusOut(e);
     });
@@ -212,7 +214,7 @@ class WebsiteManager {
    */
   handleFocusIn(e) {
     const target = e.target;
-    
+
     // 为焦点元素添加视觉反馈
     if (target.tagName === 'A' || target.tagName === 'BUTTON') {
       target.classList.add('focus-visible');
@@ -224,7 +226,7 @@ class WebsiteManager {
    */
   handleFocusOut(e) {
     const target = e.target;
-    
+
     // 移除焦点元素的视觉反馈
     if (target.tagName === 'A' || target.tagName === 'BUTTON') {
       target.classList.remove('focus-visible');
@@ -256,45 +258,8 @@ class WebsiteManager {
       }
     }
   }
-
-  /**
-   * 工具方法：防抖
-   */
-  debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-
-  /**
-   * 工具方法：节流
-   */
-  throttle(func, limit) {
-    let inThrottle;
-    return function() {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
-      }
-    };
-  }
 }
 
-// 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
   new WebsiteManager();
 });
-
-// 导出类供其他模块使用
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = WebsiteManager;
-}

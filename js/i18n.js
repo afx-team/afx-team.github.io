@@ -9,18 +9,21 @@ class I18nManager {
     this.translations = {
       zh: {
         title: 'AFX · 支付宝体验技术部 · 引领体验科技，驱动数字生活',
-        description: 'AFX · 支付宝体验技术部 - 引领体验科技，驱动数字生活。专注于前端技术、开源产品和企业级应用开发。',
+        description:
+          'AFX · 支付宝体验技术部 - 引领体验科技，驱动数字生活。专注于前端技术、开源产品和企业级应用开发。',
         ogTitle: 'AFX · 支付宝体验技术部',
-        ogDescription: '引领体验科技，驱动数字生活'
+        ogDescription: '引领体验科技，驱动数字生活',
       },
       en: {
-        title: 'AFX · Alipay Experience Technology Department · Leading Experience Technology, Driving Digital Life',
-        description: 'AFX · Alipay Experience Technology Department - Leading Experience Technology, Driving Digital Life. Focused on frontend technology, open source products and enterprise application development.',
+        title:
+          'AFX · Alipay Experience Technology Department · Leading Experience Technology, Driving Digital Life',
+        description:
+          'AFX · Alipay Experience Technology Department - Leading Experience Technology, Driving Digital Life. Focused on frontend technology, open source products and enterprise application development.',
         ogTitle: 'AFX · Alipay Experience Technology Department',
-        ogDescription: 'Leading Experience Technology, Driving Digital Life'
-      }
+        ogDescription: 'Leading Experience Technology, Driving Digital Life',
+      },
     };
-    
+
     this.init();
   }
 
@@ -50,25 +53,44 @@ class I18nManager {
    */
   updateMetaTags(lang) {
     const translation = this.translations[lang];
-    
+
     // 更新页面标题
     document.title = translation.title;
-    
+
     // 更新meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', translation.description);
     }
-    
+
     // 更新Open Graph标签
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
       ogTitle.setAttribute('content', translation.ogTitle);
     }
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
+
+    const ogDescription = document.querySelector(
+      'meta[property="og:description"]'
+    );
     if (ogDescription) {
       ogDescription.setAttribute('content', translation.ogDescription);
+    }
+
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', translation.ogTitle);
+    }
+
+    const twitterDescription = document.querySelector(
+      'meta[name="twitter:description"]'
+    );
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', translation.ogDescription);
+    }
+
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) {
+      ogLocale.setAttribute('content', lang === 'zh' ? 'zh_CN' : 'en_US');
     }
   }
 
@@ -76,8 +98,11 @@ class I18nManager {
    * 更新DOM元素内容
    */
   updateDOMContent(lang) {
-    document.querySelectorAll('[data-zh][data-en]').forEach(element => {
-      const text = lang === 'zh' ? element.getAttribute('data-zh') : element.getAttribute('data-en');
+    document.querySelectorAll('[data-zh][data-en]').forEach((element) => {
+      const text =
+        lang === 'zh'
+          ? element.getAttribute('data-zh')
+          : element.getAttribute('data-en');
       element.textContent = text;
     });
   }
@@ -89,7 +114,10 @@ class I18nManager {
     const link = document.getElementById('lang-toggle');
     if (link) {
       link.textContent = lang === 'zh' ? 'EN' : '中文';
-      link.setAttribute('aria-label', lang === 'zh' ? '切换语言' : 'Switch Language');
+      link.setAttribute(
+        'aria-label',
+        lang === 'zh' ? '切换语言' : 'Switch Language'
+      );
     }
   }
 
@@ -98,23 +126,20 @@ class I18nManager {
    */
   switchLanguage(lang) {
     this.currentLang = lang;
-    
-    // 更新DOM内容
+
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
     this.updateDOMContent(lang);
-    
-    // 更新meta标签
     this.updateMetaTags(lang);
-    
-    // 更新语言切换按钮
     this.updateLanguageToggle(lang);
-    
-    // 更新URL
     this.updateURL(lang);
-    
+
     // 分发语言切换事件
-    document.dispatchEvent(new CustomEvent('languageChanged', {
-      detail: { lang: lang }
-    }));
+    document.dispatchEvent(
+      new CustomEvent('languageChanged', {
+        detail: { lang: lang },
+      })
+    );
   }
 
   /**
@@ -141,4 +166,4 @@ class I18nManager {
 }
 
 // 初始化国际化管理器
-const i18n = new I18nManager(); 
+new I18nManager();

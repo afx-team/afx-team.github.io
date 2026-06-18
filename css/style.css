@@ -68,6 +68,11 @@ body {
   line-height: 1.15;
   color: var(--color-text);
   background-color: var(--color-background);
+  background-image:
+    radial-gradient(circle at 25% 15%, rgba(150, 125, 85, 0.022) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 75% 65%, rgba(150, 125, 85, 0.016) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(130, 110, 75, 0.012) 0.5px, transparent 0.5px);
+  background-size: 7px 7px, 11px 11px, 13px 13px;
   letter-spacing: 0.01em;
   margin: 0;
   padding: 0;
@@ -215,6 +220,10 @@ hr {
   gap: var(--spacing-md);
 }
 
+.gap-3 {
+  gap: var(--spacing-md);
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -222,6 +231,10 @@ hr {
 @media (min-width: 1024px) {
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:col-span-1 {
+    grid-column: span 1 / span 1;
   }
 }
 
@@ -287,6 +300,10 @@ hr {
 .py-2 { padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); }
 .py-3 { padding-top: var(--spacing-md); padding-bottom: var(--spacing-md); }
 
+.pb-1 { padding-bottom: var(--spacing-xs); }
+.pb-2 { padding-bottom: var(--spacing-sm); }
+.pt-4 { padding-top: var(--spacing-lg); }
+
 /* ===== 文本工具类 ===== */
 .text-xs { font-size: var(--font-size-xs); }
 .text-sm { font-size: var(--font-size-sm); }
@@ -294,14 +311,17 @@ hr {
 .text-lg { font-size: var(--font-size-lg); }
 .text-xl { font-size: var(--font-size-xl); }
 .text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
 
 .font-medium { font-weight: 500; }
 .font-semibold { font-weight: 600; }
 .font-bold { font-weight: 700; }
 
 .text-black { color: var(--color-primary); }
+.text-gray-400 { color: var(--color-text-lighter); }
 .text-gray-600 { color: var(--color-text-light); }
 .text-gray-700 { color: var(--color-text); }
+.text-gray-900 { color: var(--color-primary); }
 
 .tracking-wide { letter-spacing: 0.02em; }
 .tracking-tight { letter-spacing: -0.02em; }
@@ -311,7 +331,9 @@ hr {
 
 /* ===== 边框工具类 ===== */
 .border { border: var(--border-width) solid var(--color-border); }
+.border-0 { border: 0; }
 .border-b { border-bottom: var(--border-width) solid var(--color-border); }
+.border-t { border-top: var(--border-width) solid var(--color-border); }
 .border-l-2 { border-left: var(--border-width-thick) solid var(--color-border); }
 .border-l-4 { border-left: var(--border-width-thicker) solid var(--color-border); }
 
@@ -389,18 +411,26 @@ hr {
   transition: all var(--transition-normal);
 }
 
+.hover\:text-black:hover { color: var(--color-primary); }
+
 /* ===== 工具类 ===== */
 .hidden { display: none; }
 .block { display: block; }
 .inline-block { display: inline-block; }
 
 .w-auto { width: auto; }
+.w-full { width: 100%; }
 .h-auto { height: auto; }
 .h-12 { height: 3rem; }
+.h-16 { height: 4rem; }
+
+.max-w-7xl { max-width: 80rem; }
 
 .min-w-\[60px\] { min-width: 60px; }
 
 .mx-auto { margin-left: auto; margin-right: auto; }
+.mr-2 { margin-right: var(--spacing-sm); }
+.mb-0 { margin-bottom: 0; }
 
 .text-center { text-align: center; }
 
@@ -451,59 +481,6 @@ hr {
     height: 3rem;
   }
 }
-
-/* ===== 牛皮纸主题（覆盖 Tailwind CDN 工具类） ===== */
-/* Tailwind CDN 运行时注入，需用 !important 确保牛皮纸色板生效 */
-body.bg-white {
-  background-color: var(--color-background) !important;
-  /* 纸张纤维质感：双层细微噪点叠加暖色基底 */
-  background-image:
-    radial-gradient(circle at 25% 15%, rgba(150, 125, 85, 0.022) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 75% 65%, rgba(150, 125, 85, 0.016) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 50% 90%, rgba(130, 110, 75, 0.012) 0.5px, transparent 0.5px);
-  background-size: 7px 7px, 11px 11px, 13px 13px;
-}
-
-/* 文字颜色 */
-.text-black,
-.bg-white .text-black {
-  color: var(--color-primary) !important;
-}
-.text-gray-900 { color: var(--color-primary) !important; }
-.text-gray-700 { color: var(--color-text) !important; }
-.text-gray-600 { color: var(--color-text-light) !important; }
-.text-gray-400 { color: var(--color-text-lighter) !important; }
-
-/* 边框颜色 */
-.border-black { border-color: var(--color-primary) !important; }
-.border-gray-300 { border-color: var(--color-border-dark) !important; }
-.border-gray-400 { border-color: var(--color-border-dark) !important; }
-.border-b { border-bottom-color: var(--color-border) !important; }
-
-/* 卡片/引用块的浅色底（招聘、文化区块） */
-.bg-gray-50 {
-  background-color: var(--color-background-light) !important;
-}
-
-/* 链接 hover 在牛皮纸上的反馈 */
-a:hover {
-  color: var(--color-secondary);
-  text-decoration-color: var(--color-secondary);
-}
-
-/* 列表项 hover 背景适配牛皮纸 */
-@media (hover: hover) {
-  [role="list"] > article[role="listitem"]:hover {
-    background-color: var(--color-background-light);
-  }
-}
-
-/* 选中文本 */
-::selection {
-  background: var(--color-border-dark);
-  color: var(--color-primary);
-}
-
 
 /* ===== 开源产品 Star 徽章 ===== */
 .repo-stars {
