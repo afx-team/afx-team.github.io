@@ -75,6 +75,23 @@ class I18nManager {
     if (ogDescription) {
       ogDescription.setAttribute('content', translation.ogDescription);
     }
+
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', translation.ogTitle);
+    }
+
+    const twitterDescription = document.querySelector(
+      'meta[name="twitter:description"]'
+    );
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', translation.ogDescription);
+    }
+
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) {
+      ogLocale.setAttribute('content', lang === 'zh' ? 'zh_CN' : 'en_US');
+    }
   }
 
   /**

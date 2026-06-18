@@ -570,7 +570,7 @@
         inputPosition: 'top',
         // 自定义主题：从当前页面同源加载，确保 PR 预览/本地/生产都能拿到对应分支的主题
         theme: new URL('css/giscus-theme.css', document.baseURI).href,
-        lang: 'zh-CN',
+        lang: new URLSearchParams(window.location.search).get('lang') === 'en' ? 'en' : 'zh-CN',
         loading: 'lazy'
       };
 
