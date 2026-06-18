@@ -9,8 +9,8 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: afc163/surge-preview@v2
+      - uses: actions/checkout@v6
+      - uses: afc163/surge-preview@v1
         with:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           dist: .
