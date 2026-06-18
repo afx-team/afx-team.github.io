@@ -13,5 +13,6 @@ jobs:
       - uses: afc163/surge-preview@v1
         with:
           surge_token: ${{ secrets.SURGE_TOKEN }}
+          build: echo "no build needed"
           dist: .
           teardown: true
