@@ -1,0 +1,17 @@
+name: 🔂 Surge PR Preview
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: afc163/surge-preview@v2
+        with:
+          surge_token: ${{ secrets.SURGE_TOKEN }}
+          dist: .
+          teardown: true
