@@ -16,20 +16,21 @@
   // 写死兜底值：API 限流或失败时使用。数值会随时间略有偏差，定期更新即可。
   const FALLBACK = {
     'ant-design': 192115,
-    'eggjs/egg': 18995,
-    'umijs/qiankun': 16612,
-    'umijs/umi': 16031,
-    'umijs/dumi': 3794,
-    'neovateai/neovate-code': 1538,
-    'afx-team/petercat': 1489,
-    'utooland/utoo': 2490,
-    'cnpm/cnpm': 2098,
-    'galacean/effects-runtime': 611,
-    'afx-team/UI-UG': 86,
+    'eggjs/egg': 18993,
+    'umijs/qiankun': 16621,
+    'umijs/umi': 16037,
+    'umijs/dumi': 3797,
+    'neovateai/neovate-code': 1546,
+    'afx-team/petercat': 1491,
+    'utooland/utoo': 2513,
+    'cnpm/cnpm': 2096,
+    'galacean/effects-runtime': 610,
+    'afx-team/UI-UG': 87,
     'unieojs/unieo': 32,
-    'afx-team/evjs': 13,
+    'afx-team/evjs': 20,
     'afx-team/WhiskerRAG': 11,
-    'afx-team/hebb-mind': 6,
+    'afx-team/hebb-mind': 32,
+    'afx-team/UI-UX': 9,
   };
 
   /** 从卡片内的 GitHub 链接解析出 owner/repo，或组织名（组织主页链接） */
