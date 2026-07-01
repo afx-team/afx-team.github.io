@@ -439,7 +439,7 @@ hr {
 }
 
 /* ===== 列表项打磨（报纸密排风格下的轻量精修） ===== */
-/* 统一作用于 新闻动态 / 开源产品 / 招聘岗位 列表，复用已有语义结构 */
+/* 统一作用于 新闻动态 / 开源项目 / 招聘岗位 列表，复用已有语义结构 */
 [role="list"] > article[role="listitem"] {
   margin-left: calc(var(--spacing-sm) * -1);
   margin-right: calc(var(--spacing-sm) * -1);
@@ -482,7 +482,7 @@ hr {
   }
 }
 
-/* ===== 开源产品 Star 徽章 ===== */
+/* ===== 开源项目 Star 徽章 ===== */
 .repo-stars {
   margin-left: var(--spacing-sm);
   font-weight: 500;
