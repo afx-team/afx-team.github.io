@@ -42,6 +42,19 @@ test('external links provide localized aria-label values', () => {
       /[\u4e00-\u9fff]/,
       `English aria-label contains Chinese text: ${tag}`
     );
+
+    if (
+      attributes['data-zh'] &&
+      attributes['data-en'] &&
+      attributes['data-aria-en'] ===
+        `${attributes['data-en']} - Open in new window`
+    ) {
+      assert.equal(
+        attributes['data-aria-zh'],
+        `${attributes['data-zh']} - 在新窗口打开`,
+        `localized title aria-label does not match data-zh: ${tag}`
+      );
+    }
   }
 });
 
