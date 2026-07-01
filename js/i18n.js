@@ -105,6 +105,16 @@ class I18nManager {
           : element.getAttribute('data-en');
       element.textContent = text;
     });
+
+    document
+      .querySelectorAll('[data-aria-zh][data-aria-en]')
+      .forEach((element) => {
+        const label =
+          lang === 'zh'
+            ? element.getAttribute('data-aria-zh')
+            : element.getAttribute('data-aria-en');
+        element.setAttribute('aria-label', label);
+      });
   }
 
   /**

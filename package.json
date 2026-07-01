@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "AFX Team 官方网站",
   "scripts": {
+    "test": "node --test",
     "format": "biome format --write .",
     "lint": "biome lint .",
     "check": "biome check --write .",
