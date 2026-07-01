@@ -3,7 +3,7 @@
  * 配色与字体对齐 css/style.css 的设计系统变量，使评论区与页面风格一致
  */
 
-/* biome-ignore-all lint/complexity/noImportantStyles: 覆盖 giscus iframe 内置 Tailwind 工具类样式必须用 !important */
+/* biome-ignore-all lint/nursery/noImportantStyles: 覆盖 giscus iframe 内置 Tailwind 工具类样式必须用 !important */
 
 main {
   /* 语法高亮（代码块）保留原 light 主题配色，仅微调以贴合暖色基底 */
