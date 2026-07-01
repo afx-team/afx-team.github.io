@@ -188,12 +188,12 @@ a:focus {
 /* 引用块组件 */
 blockquote {
   border-left: var(--border-width-thicker) solid var(--color-text-lighter);
-  padding-left: var(--spacing-md);
   margin: var(--spacing-lg) 0;
   font-style: italic;
   color: var(--color-text);
   background: var(--color-background-light);
   padding: var(--spacing-md);
+  padding-left: var(--spacing-md);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
