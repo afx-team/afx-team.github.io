@@ -1,5 +1,5 @@
 /**
- * 开源产品 GitHub Star 数获取与排序
+ * 开源项目 GitHub Star 数获取与排序
  *
  * 页面加载后拉取各仓库 star 数，渲染到标题旁，并按 star 降序重排卡片。
  * - ant-design 链接指向组织主页，star 取该组织所有仓库之和。
