@@ -125,7 +125,7 @@ test('valid lang query takes precedence over browser language detection', () => 
   assert.equal(manager.currentLang, 'en');
 });
 
-test('invalid lang query falls back to Chinese without browser detection', () => {
+test('invalid lang query ignores English browser locale and falls back to Chinese', () => {
   const manager = createI18nManager({
     search: '?lang=fr',
     language: 'en-US',
