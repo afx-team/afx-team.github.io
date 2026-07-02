@@ -63,7 +63,15 @@ function createI18nManager({ search = '', language = 'zh-CN', languages } = {}) 
   };
 
   vm.createContext(context);
-  vm.runInContext(`${i18nScript}\nglobalThis.I18nManager = I18nManager;`, context);
+
+  const i18nScriptWithoutInit = i18nScript.replace(
+    /\n?\s*new I18nManager\(\);\s*$/,
+    ''
+  );
+  vm.runInContext(
+    `${i18nScriptWithoutInit}\nglobalThis.I18nManager = I18nManager;`,
+    context
+  );
 
   return new context.I18nManager();
 }
