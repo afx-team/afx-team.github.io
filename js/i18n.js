@@ -5,7 +5,7 @@
 
 class I18nManager {
   constructor() {
-    this.currentLang = this.getLanguageFromURL() || 'zh';
+    this.currentLang = this.getInitialLanguage();
     this.translations = {
       zh: {
         title: 'AFX · 支付宝体验技术部 · 引领体验科技，驱动数字生活',
@@ -33,6 +33,59 @@ class I18nManager {
   getLanguageFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('lang');
+  }
+
+  /**
+   * 规范化语言值
+   */
+  normalizeLanguage(lang) {
+    if (!lang) {
+      return null;
+    }
+
+    const normalizedLang = lang.toLowerCase();
+
+    if (normalizedLang.startsWith('zh')) {
+      return 'zh';
+    }
+
+    if (normalizedLang.startsWith('en')) {
+      return 'en';
+    }
+
+    return null;
+  }
+
+  /**
+   * 检测浏览器语言
+   */
+  detectBrowserLanguage() {
+    const browserLanguages = navigator.languages?.length
+      ? navigator.languages
+      : [navigator.language];
+
+    for (const lang of browserLanguages) {
+      const normalizedLang = this.normalizeLanguage(lang);
+
+      if (normalizedLang) {
+        return normalizedLang;
+      }
+    }
+
+    return 'zh';
+  }
+
+  /**
+   * 获取初始化语言
+   */
+  getInitialLanguage() {
+    const urlLanguage = this.getLanguageFromURL();
+
+    if (urlLanguage !== null) {
+      return this.normalizeLanguage(urlLanguage) || 'zh';
+    }
+
+    return this.detectBrowserLanguage();
   }
 
   /**
