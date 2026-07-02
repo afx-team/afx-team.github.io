@@ -125,11 +125,17 @@ test('valid lang query takes precedence over browser language detection', () => 
   assert.equal(manager.currentLang, 'en');
 });
 
-test('invalid lang query ignores English browser locale and falls back to Chinese', () => {
+test('invalid lang query ignores browser locale and falls back to English', () => {
   const manager = createI18nManager({
     search: '?lang=fr',
-    language: 'en-US',
+    language: 'zh-CN',
   });
 
-  assert.equal(manager.currentLang, 'zh');
+  assert.equal(manager.currentLang, 'en');
+});
+
+test('unrecognized browser language falls back to English', () => {
+  const manager = createI18nManager({ language: 'fr-FR', languages: ['fr-FR'] });
+
+  assert.equal(manager.currentLang, 'en');
 });

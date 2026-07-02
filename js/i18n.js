@@ -72,7 +72,7 @@ class I18nManager {
       }
     }
 
-    return 'zh';
+    return 'en';
   }
 
   /**
@@ -82,7 +82,7 @@ class I18nManager {
     const urlLanguage = this.getLanguageFromURL();
 
     if (urlLanguage !== null) {
-      return this.normalizeLanguage(urlLanguage) || 'zh';
+      return this.normalizeLanguage(urlLanguage) || 'en';
     }
 
     return this.detectBrowserLanguage();
