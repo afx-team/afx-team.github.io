@@ -116,7 +116,16 @@ test('defaults to browser Chinese when no lang query is provided', () => {
   assert.equal(manager.currentLang, 'zh');
 });
 
-test('lang query skips browser language detection', () => {
+test('valid lang query takes precedence over browser language detection', () => {
+  const manager = createI18nManager({
+    search: '?lang=en',
+    language: 'zh-CN',
+  });
+
+  assert.equal(manager.currentLang, 'en');
+});
+
+test('invalid lang query falls back to Chinese without browser detection', () => {
   const manager = createI18nManager({
     search: '?lang=fr',
     language: 'en-US',
