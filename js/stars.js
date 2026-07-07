@@ -16,6 +16,7 @@
   // 写死兜底值：API 限流或失败时使用。数值会随时间略有偏差，定期更新即可。
   const FALLBACK = {
     'ant-design': 192728,
+    'ant-design/x-markdown-mini': 1,
     'eggjs/egg': 18995,
     'umijs/qiankun': 16624,
     'umijs/umi': 16035,
