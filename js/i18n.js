@@ -8,19 +8,20 @@ class I18nManager {
     this.currentLang = this.getInitialLanguage();
     this.translations = {
       zh: {
-        title: 'AFX · 支付宝体验技术部 · 引领体验科技，驱动数字生活',
+        title: 'AFX · 支付宝体验技术部 · 引领体验科技，驱动智能生活',
         description:
-          'AFX · 支付宝体验技术部 - 引领体验科技，驱动数字生活。专注于前端技术、开源项目和企业级应用开发。',
+          'AFX · 支付宝体验技术部 - 引领体验科技，驱动智能生活。专注于前端技术、开源项目和企业级应用开发。',
         ogTitle: 'AFX · 支付宝体验技术部',
-        ogDescription: '引领体验科技，驱动数字生活',
+        ogDescription: '引领体验科技，驱动智能生活',
       },
       en: {
         title:
-          'AFX · Alipay Experience Technology Department · Leading Experience Technology, Driving Digital Life',
+          'AFX · Alipay Experience Technology Department · Leading Experience Technology, Driving Intelligent Life',
         description:
-          'AFX · Alipay Experience Technology Department - Leading Experience Technology, Driving Digital Life. Focused on frontend technology, open source products and enterprise application development.',
+          'AFX · Alipay Experience Technology Department - Leading Experience Technology, Driving Intelligent Life. Focused on frontend technology, open source products and enterprise application development.',
         ogTitle: 'AFX · Alipay Experience Technology Department',
-        ogDescription: 'Leading Experience Technology, Driving Digital Life',
+        ogDescription:
+          'Leading Experience Technology, Driving Intelligent Life',
       },
     };
 
